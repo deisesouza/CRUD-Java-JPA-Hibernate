@@ -1,6 +1,10 @@
 package br.com.deise.model;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +27,20 @@ public class Produto {
 	private BigDecimal valor;
 	
 	@Column
-	private String data;
+	private Date data;
 	
+	public Produto(String nome, BigDecimal valor, String data) {
+		super();
+		this.nome = nome;
+		this.valor = valor;
+		
+		SimpleDateFormat  sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			this.data = sdf.parse(data);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}	
+	}
 	
 	public int getId() {
 		return id;
@@ -44,14 +60,13 @@ public class Produto {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
-	
-	
+		
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,8 +74,7 @@ public class Produto {
 		result = prime * result + id;
 		return result;
 	}
-	
-	
+		
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,5 +88,5 @@ public class Produto {
 			return false;
 		return true;
 	}
-	
+
 }
