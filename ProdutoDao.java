@@ -1,14 +1,14 @@
 package br.com.deise.model.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import javax.persistence.EntityManager;
 import br.com.deise.controller.ControleConexao;
-import javax.persistence.Query;
 import br.com.deise.model.Produto;
 
 public class ProdutoDao {
 
-	Produto produto = new Produto();
+	Produto produto = new Produto("Deise", new BigDecimal(3700), "12/04/2019");
 
 	//INSERT
 	public void salvar(Produto produto) {
@@ -68,6 +68,7 @@ public class ProdutoDao {
 	}			
 
 	// SELECT
+	@SuppressWarnings("unchecked")
 	public List<Produto> listarTodos(){
 		EntityManager gerenciador = new ControleConexao().conectar();
 		List<Produto> lista = null;
@@ -80,8 +81,5 @@ public class ProdutoDao {
 			gerenciador.close();
 		}
 		return lista;	
-
-	}	
-
-	
+	}		
 }
