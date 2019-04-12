@@ -9,21 +9,17 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		Produto produto = new Produto();
+		Produto produto = new Produto("Deise", new BigDecimal(3700), "12/04/2019");
 		ProdutoDao executar = new ProdutoDao();
 		
-		//produto.setNome("Carlos");
-		//produto.setData("04/11/2010");
-		//produto.setValor(new BigDecimal(3700));
-		
 		//SALVAR
-		//executar.salvar(produto);
+		executar.salvar(produto);
 		
 		//ALTERAR
 		//executar.alterar(produto);
 		
 		//DELETAR
-		executar.remover(5); 
+		//executar.remover(5); 
 		
 		//LISTAR POR ID
 		//produto = executar.buscarPorId(2);
@@ -33,8 +29,6 @@ public class Principal {
 		//List<Produto> produtos = executar.listarTodos();
 		//for(Produto p: produtos) {
 		//	System.out.println("Nome: " + p.getNome() + " Valor: " +p.getValor() + " Data: " +p.getData());
-		//}
-		
+		//}		
 	}
-
 }
